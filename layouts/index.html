@@ -1,0 +1,44 @@
+{{ partial "header.html" . }}
+
+<div id="page-title">
+  <h1>{{ .Title }}</h1>
+</div>
+
+<div id="posts">
+  {{ $paginator := .Paginate (where .Data.Pages "Type" "posts") (.Site.Params.paginatorNum | default 10) }}
+  <ul id="post-list">
+    {{ range $paginator.Pages }}
+    <li class="post"><a href="{{ .Permalink }}">{{ .Date.Format "2006-01-02" }} | {{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+  <div class="paginator">
+    {{ if $paginator.HasPrev }}
+      <a href="{{ $paginator.Prev.URL | absURL }}">Prev</a>
+    {{ end }}
+    {{ if $paginator.HasNext }}
+      <a href="{{ $paginator.Next.URL | absURL }}">Next</a>
+    {{ end }}
+  </div>
+</div>
+
+<div id="profile">
+  <div>
+    <ul>
+      <li>{{ .Site.Params.author }}</li>
+      <li>{{ .Site.Params.description }}</li>
+    </ul>
+  </div>
+  <div id="socials">
+    <ul>
+      <li class="social facebook"><a href="https://facebook.com/{{ .Site.Params.Social.facebook }}"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+      <li class="social twitter"><a href="https://twitter.com/{{ .Site.Params.Social.twitter }}"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+      <li class="social instagram"><a href="https://instagram.com/{{ .Site.Params.Social.instagram }}"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+      <li class="social soundcloud"><a href="https://soundcloud.com/{{ .Site.Params.Social.soundcloud }}"><i class="fa fa-soundcloud" aria-hidden="true"></i></a></li>
+      <li class="social spotify"><a href="https://open.spotify.com/user/{{ .Site.Params.Social.spotify }}"><i class="fa fa-spotify" aria-hidden="true"></i></a></li>
+      <li class="social github"><a href="https://github.com/{{ .Site.Params.Social.github }}"><i class="fa fa-github-square" aria-hidden="true"></i></a></li>
+      <li class="social linkedin"><a href="https://linkedin.com/in/{{ .Site.Params.Social.linkedin }}"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+    </ul>
+  </div>
+</div>
+
+{{ partial "footer.html" . }}
