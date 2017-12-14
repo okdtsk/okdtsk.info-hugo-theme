@@ -1,7 +1,85 @@
-$fa-font-path: '/fonts';
+@import "colors.scss";
 
-@import '../../node_modules/font-awesome/scss/font-awesome';
+$big-size: 1.25rem;
+$small-size: 0.85rem;
 
-body {
-  size: 14px;
+html {
+  font-size: 14px;
+}
+
+.site-title {
+  font-size: $big-size;
+}
+
+h1.post-title {
+  font-size: $big-size;
+}
+
+h1.post-title::after {
+  content: '';
+}
+
+.social {
+  a {
+    border-bottom: 0px;
+  }
+  .url {
+    margin-left: 5px;
+    font-size: $small-size;
+    border-bottom: 1px solid;
+  }
+}
+
+.paginator {
+  margin-bottom: 25px;
+  a {
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+  .next {
+    text-align: right;
+  }
+}
+
+.paginator.single {
+  .back-to-top {
+    text-align: center;
+  }
+}
+
+.post-list > .post {
+  margin-bottom: 1.5rem;
+  .title {
+    font-size: $big-size;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.readmore {
+  font-size: $small-size;
+}
+
+.profile-image {
+  border-radius: 50%;
+}
+
+.site-footer {
+  font-size: $small-size;
+  color: $gray;
+}
+
+.post-footer {
+  font-size: $small-size;
+}
+
+// == General
+pre {
+  padding: 0;
+}
+
+.hack code {
+  font-weight: normal;
+  padding: 10px;
+  line-height: 1.5rem;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }

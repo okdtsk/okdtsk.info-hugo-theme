@@ -4,10 +4,9 @@
   "description": "blog theme for okdtsk",
   "main": "index.js",
   "scripts": {
-    "css:fa": "mkdir -p ./static/fonts && cp ./node_modules/font-awesome/fonts/* ./static/fonts",
-    "css:scss": "node-sass --source-map true --output-style compressed -o ./static/css/org/ ./src/sass/*.scss",
-    "css:optimize": "cleancss -o ./static/css/style.min.css --level 2 --source-map ./static/css/org/*.css",
-    "css:build": "npm run css:fa && npm run css:scss && npm run css:optimize",
+    "css:scss": "node-sass --source-map true --output-style compressed --include-path ./node_modules/colors-sass/sass/ -o ./_generated/css/ ./src/sass/*.scss",
+    "css:optimize": "cleancss -o ./static/css/style.min.css --level 2 --source-map ./_generated/css/*.css",
+    "css:build": "npm run css:scss && npm run css:optimize",
     "css:watch": "onchange './src/sass/*.scss' -- npm run css:build",
     "watch": "parallelshell 'npm run css:watch'"
   },
@@ -15,6 +14,7 @@
   "license": "MIT",
   "devDependencies": {
     "clean-css-cli": "^4.1.10",
+    "colors-sass": "^1.0.0",
     "node-sass": "^4.7.2",
     "onchange": "^3.2.1",
     "parallelshell": "^3.0.2"
